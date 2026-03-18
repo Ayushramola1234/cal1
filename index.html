@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcify - Free Online Calculators</title>
+    <meta name="description"
+        content="Calcify offers 200+ free online calculators for health, finance, math, and everyday life.">
+    <link rel="canonical" href="https://calcify.com/">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Local Styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/components.css">
+
+    <!-- Lunr.js for Client-Side Search -->
+    <script src="https://cdn.jsdelivr.net/npm/lunr/lunr.min.js" defer></script>
+
+    <!-- Local Scripts -->
+    <script src="/js/main.js" defer></script>
+    <script src="/js/utils.js" defer></script>
+    <script src="/js/calculators.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Note: Since this project uses no build tools, the Navbar and Footer are manually included below. -->
+
+    <!-- ==============================================
+         NAVBAR (matches components/navbar.html)
+         ============================================== -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="navbar-brand">Calcify</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/pages/health/">Health</a></li>
+                <li><a href="/pages/finance/">Finance</a></li>
+                <li><a href="/pages/math/">Math</a></li>
+                <li><a href="/pages/converters/">Converters</a></li>
+                <li><a href="/pages/tools/">Tools</a></li>
+                <li><a href="/pages/date/">Date & Time</a></li>
+            </ul>
+            <div class="navbar-actions">
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fa-solid fa-circle-half-stroke"></i>
+                </button>
+                <button class="mobile-toggle" aria-label="Open mobile menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- 1. Hero Section -->
+        <section class="hero" style="text-align: center; padding: 80px 20px; background-color: var(--surface-2);">
+            <div class="container">
+                <h1 style="font-size: 3rem; margin-bottom: 0.5rem; color: var(--primary);">Calcify</h1>
+                <p style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 2rem;">200+ free online
+                    calculators for health, finance, math, and everyday life.</p>
+
+                <div class="search-container" style="max-width: 600px; margin: 0 auto; position: relative;">
+                    <div class="form-group" style="margin: 0;">
+                        <input type="text" id="global-search" placeholder="Search for calculators..."
+                            aria-label="Search">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Featured Calculators -->
+        <section class="featured">
+            <div class="container">
+                <h2>Featured Calculators</h2>
+                <div class="card-grid" id="featured-grid"
+                    style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                    <!-- JS will populate these reading from featured:true in calculators.js -->
+                    <!-- Dummy placeholder for visual structure -->
+                    <div class="card">
+                        <i class="fa-solid fa-weight-scale"
+                            style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                        <h3 class="card-title">BMI Calculator</h3>
+                        <p style="font-size: var(--text-sm); color: var(--text-secondary);">Calculate your Body Mass
+                            Index to assess your weight.</p>
+                        <a href="/pages/health/bmi-calculator.html" class="btn btn-secondary"
+                            style="margin-top: 1rem;">Open Calculator</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Categories Grid -->
+        <section class="categories" style="background-color: var(--surface-2);">
+            <div class="container">
+                <h2>Browse by Category</h2>
+                <div class="card-grid"
+                    style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+
+                    <a href="/pages/health/" class="card"
+                        style="text-decoration: none; color: inherit; text-align: center;">
+                        <i class="fa-solid fa-heart-pulse"
+                            style="font-size: 2.5rem; color: var(--error); margin-bottom: 1rem;"></i>
+                        <h3 class="card-title">Health & Fitness</h3>
+                        <p style="font-size: var(--text-sm); color: var(--text-secondary);">BMI, Macros, Calories, BMR
+                        </p>
+                    </a>
+
+                    <a href="/pages/finance/" class="card"
+                        style="text-decoration: none; color: inherit; text-align: center;">
+                        <i class="fa-solid fa-coins"
+                            style="font-size: 2.5rem; color: var(--warning); margin-bottom: 1rem;"></i>
+                        <h3 class="card-title">Finance & Money</h3>
+                        <p style="font-size: var(--text-sm); color: var(--text-secondary);">Loans, Mortgages, Savings
+                        </p>
+                    </a>
+
+                    <a href="/pages/math/" class="card"
+                        style="text-decoration: none; color: inherit; text-align: center;">
+                        <i class="fa-solid fa-square-root-variable"
+                            style="font-size: 2.5rem; color: #8B5CF6; margin-bottom: 1rem;"></i>
+                        <h3 class="card-title">Math & Science</h3>
+                        <p style="font-size: var(--text-sm); color: var(--text-secondary);">Algebra, Geometry, Fractions
+                        </p>
+                    </a>
+
+                    <a href="/pages/converters/" class="card"
+                        style="text-decoration: none; color: inherit; text-align: center;">
+                        <i class="fa-solid fa-arrows-rotate"
+                            style="font-size: 2.5rem; color: #10B981; margin-bottom: 1rem;"></i>
+                        <h3 class="card-title">Unit Converters</h3>
+                        <p style="font-size: var(--text-sm); color: var(--text-secondary);">Length, Weight, Temperature
+                        </p>
+                    </a>
+
+                    <a href="/pages/tools/" class="card"
+                        style="text-decoration: none; color: inherit; text-align: center;">
+                        <i class="fa-solid fa-screwdriver-wrench"
+                            style="font-size: 2.5rem; color: #64748B; margin-bottom: 1rem;"></i>
+                        <h3 class="card-title">Everyday Tools</h3>
+                        <p style="font-size: var(--text-sm); color: var(--text-secondary);">Age, Password Generator</p>
+                    </a>
+
+                    <a href="/pages/date/" class="card"
+                        style="text-decoration: none; color: inherit; text-align: center;">
+                        <i class="fa-solid fa-calendar-days"
+                            style="font-size: 2.5rem; color: #3B82F6; margin-bottom: 1rem;"></i>
+                        <h3 class="card-title">Date & Time</h3>
+                        <p style="font-size: var(--text-sm); color: var(--text-secondary);">Time Between, Age Calculator
+                        </p>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Popular Calculators -->
+        <section class="popular">
+            <div class="container">
+                <h2>Popular Calculators</h2>
+                <ul
+                    style="list-style: none; margin-top: 1rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">
+                    <li><a href="/pages/health/bmi-calculator.html" class="btn btn-secondary"
+                            style="width: 100%; justify-content: start;">BMI Calculator</a></li>
+                    <li><a href="/pages/finance/compound-interest.html" class="btn btn-secondary"
+                            style="width: 100%; justify-content: start;">Compound Interest</a></li>
+                    <li><a href="/pages/math/percentage-calculator.html" class="btn btn-secondary"
+                            style="width: 100%; justify-content: start;">Percentage Calculator</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 5. Recently Added -->
+        <section class="recently-added" style="background-color: var(--surface-2);">
+            <div class="container">
+                <h2>Recently Added</h2>
+                <ul id="recently-added-list" style="margin-top: 1rem; color: var(--text-secondary);">
+                    <!-- JavaScript will load this from calculators.js dateAdded -->
+                    <li>BMI Calculator added on 2025-03-01</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 6. About Calcify -->
+        <section class="about-site text-center" style="text-align: center; padding-bottom: 80px;">
+            <div class="container" style="max-width: 800px;">
+                <h2>About Calcify</h2>
+                <p style="color: var(--text-secondary); font-size: 1.125rem;">Calcify is designed to be your one-stop
+                    utility platform. We offer over 200 tailored, accurate online calculators covering everything from
+                    complex financial forecasting to quick health and fitness metrics. Built for speed, privacy, and
+                    precision, our tools are 100% free and work instantly right inside your browser.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==============================================
+         FOOTER (matches components/footer.html)
+         ============================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>About Calcify</h3>
+                    <p>Calcify offers 200+ free online calculators for health, finance, math, and everyday life.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Calculator Categories</h3>
+                    <ul>
+                        <li><a href="/pages/health/">Health & Fitness</a></li>
+                        <li><a href="/pages/finance/">Finance & Money</a></li>
+                        <li><a href="/pages/math/">Math & Science</a></li>
+                        <li><a href="/pages/converters/">Unit Converters</a></li>
+                        <li><a href="/pages/tools/">Everyday Tools</a></li>
+                        <li><a href="/pages/date/">Date & Time</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Popular Calculators</h3>
+                    <ul>
+                        <li><a href="/pages/health/bmi-calculator.html">BMI Calculator</a></li>
+                        <li><a href="/pages/finance/compound-interest.html">Compound Interest</a></li>
+                        <li><a href="/pages/math/percentage-calculator.html">Percentage Calculator</a></li>
+                        <li><a href="/pages/health/calorie-calculator/">Calorie Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="/about.html">About Us</a></li>
+                        <li><a href="/terms.html">Terms of Use</a></li>
+                        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="/contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Calcify. All rights reserved. Made with &hearts; for everyone</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
